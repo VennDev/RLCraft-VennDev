@@ -1,4 +1,4 @@
-# RLCraft-VennDev
+# RLCraft VennDev
 - The modpack adds content to rlcraft to be interesting in the style of VennDev I :))
 
 # How to install?
