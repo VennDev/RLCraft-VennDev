@@ -789,6 +789,16 @@ recipes.addShaped("vitemsweapons2",<vitemsmod:terminator_bow>,[
 [<forgottenitems:ender_talisman>,<srparasites:weapon_bow_sentient>,<minecraft:string>*64],
 [<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>]
 ]);
+recipes.addShaped("vitemsitems1",<vitemsmod:end_rune>,[
+[<minecraft:ender_pearl>*16,null,null],
+[<minecraft:ender_pearl>*16,null,null],
+[<minecraft:ender_pearl>*16,null,null]
+]);
+recipes.addShaped("vitemsitems2",<vitemsmod:heart_rune>,[
+[<minecraft:golden_apple>*5,null,null],
+[<minecraft:golden_apple>*5,null,null],
+[<minecraft:golden_apple>*5,null,null]
+]);
 
 //recipes.addShapeless("lolsrsweapon1",<srparasites:weapon_scythe_sentient>,[<srparasites:weapon_scythe>,<contenttweaker:sentient_core>]);
 //recipes.addShapeless("lolsrsweapon2",<srparasites:weapon_axe_sentient>,[<srparasites:weapon_axe>,<contenttweaker:sentient_core>]);
