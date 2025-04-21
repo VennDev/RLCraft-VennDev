@@ -789,6 +789,11 @@ recipes.addShaped("vitemsweapons2",<vitemsmod:terminator_bow>,[
 [<forgottenitems:ender_talisman>,<srparasites:weapon_bow_sentient>,<minecraft:string>*64],
 [<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>]
 ]);
+recipes.addShaped("vitemsweapons3",<vitemsmod:inferther_sword>,[
+[null,<srparasites:weapon_cleaver_sentient>,null],
+[<iceandfire:witherbone>*32,<xat:dragons_eye>,<iceandfire:witherbone>*32],
+[null,<srparasites:hardened_bone_handle>,null]
+]);
 recipes.addShaped("vitemsitems1",<vitemsmod:end_rune>,[
 [<minecraft:ender_pearl>*16,null,null],
 [<minecraft:cobblestone>*64,null,null],
