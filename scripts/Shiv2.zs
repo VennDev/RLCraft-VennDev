@@ -4,47 +4,58 @@ import crafttweaker.block.IBlockDefinition;
 
 print("Script starting!");
 
-<simpledifficulty:wool_helmet:*>.addTooltip(game.localize("tooltip.simpledifficulty:wool_helmet", "en_us"));
-<simpledifficulty:wool_chestplate:*>.addTooltip(game.localize("tooltip.simpledifficulty:wool_chestplate", "en_us"));
-<simpledifficulty:wool_leggings:*>.addTooltip(game.localize("tooltip.simpledifficulty:wool_leggings", "en_us"));
-<simpledifficulty:wool_boots:*>.addTooltip(game.localize("tooltip.simpledifficulty:wool_boots", "en_us"));
-<simpledifficulty:ice_helmet:*>.addTooltip(game.localize("tooltip.simpledifficulty:ice_helmet", "en_us"));
-<simpledifficulty:ice_chestplate:*>.addTooltip(game.localize("tooltip.simpledifficulty:ice_chestplate", "en_us"));
-<simpledifficulty:ice_leggings:*>.addTooltip(game.localize("tooltip.simpledifficulty:ice_leggings", "en_us"));
-<simpledifficulty:ice_boots:*>.addTooltip(game.localize("tooltip.simpledifficulty:ice_boots", "en_us"));
+events.onPlayerTick(function(event as crafttweaker.event.PlayerTickEvent) {
+  var player = event.player;
+  var potionToRemove = <potion:srparasites:viral>;
+  var maxAmplifierAllowed = 9;
+  if player.isPotionActive(potionToRemove) {
+    var active = player.getActivePotionEffect(potionToRemove);
+    if active.amplifier > maxAmplifierAllowed {
+      player.removePotionEffect(potionToRemove);
+      player.addPotionEffect(<potion:srparasites:viral>.makePotionEffect(active.duration, 9));
+    }
+  }
+});
 
-// iirc, if I removed these displayName lines, the script dies... So I'll leave them for now
-<rlmixins:scarlite_helmet:*>.displayName = game.localize("item.scarlite_helmet.name", "en_us");
-<rlmixins:scarlite_chestplate:*>.displayName = game.localize("item.scarlite_chestplate.name", "en_us");
-<rlmixins:scarlite_leggings:*>.displayName = game.localize("item.scarlite_leggings.name", "en_us");
-<rlmixins:scarlite_boots:*>.displayName = game.localize("item.scarlite_boots.name", "en_us");
+<simpledifficulty:wool_helmet:*>.addTooltip(format.darkRed("+2 Warmth"));
+<simpledifficulty:wool_chestplate:*>.addTooltip(format.darkRed("+2 Warmth"));
+<simpledifficulty:wool_leggings:*>.addTooltip(format.darkRed("+2 Warmth"));
+<simpledifficulty:wool_boots:*>.addTooltip(format.darkRed("+2 Warmth"));
+<simpledifficulty:ice_helmet:*>.addTooltip(format.darkAqua("+2 Cooling"));
+<simpledifficulty:ice_chestplate:*>.addTooltip(format.darkAqua("+2 Cooling"));
+<simpledifficulty:ice_leggings:*>.addTooltip(format.darkAqua("+2 Cooling"));
+<simpledifficulty:ice_boots:*>.addTooltip(format.darkAqua("+2 Cooling"));
 
-<mujmajnkraftsbettersurvival:itemsteelhammer:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<mujmajnkraftsbettersurvival:itemsteelspear:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<mujmajnkraftsbettersurvival:itemsteeldagger:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<mujmajnkraftsbettersurvival:itemsteelbattleaxe:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<mujmajnkraftsbettersurvival:itemsteelnunchaku:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:dagger_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:longsword_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:katana_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:saber_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:rapier_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:greatsword_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:hammer_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:warhammer_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:spear_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:throwing_axe_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:halberd_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:pike_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:lance_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:throwing_knife_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:javelin_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:boomerang_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:battleaxe_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:mace_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:glaive_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:staff_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
-<spartanweaponry:scythe_steel:*>.addTooltip(game.localize("tooltip.scripts.weapon.steelbonus", "en_us"));
+<rlmixins:scarlite_helmet:*>.displayName = "\u00A74\u00A7kScarlite\u00A7r\u00A74 Helmet";
+<rlmixins:scarlite_chestplate:*>.displayName = "\u00A74\u00A7kScarlite\u00A7r\u00A74 Chestplate";
+<rlmixins:scarlite_leggings:*>.displayName = "\u00A74\u00A7kScarlite\u00A7r\u00A74 Leggings";
+<rlmixins:scarlite_boots:*>.displayName = "\u00A74\u00A7kScarlite\u00A7r\u00A74 Boots";
+
+<mujmajnkraftsbettersurvival:itemsteelhammer:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<mujmajnkraftsbettersurvival:itemsteelspear:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<mujmajnkraftsbettersurvival:itemsteeldagger:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<mujmajnkraftsbettersurvival:itemsteelbattleaxe:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<mujmajnkraftsbettersurvival:itemsteelnunchaku:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:dagger_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:longsword_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:katana_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:saber_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:rapier_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:greatsword_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:hammer_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:warhammer_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:spear_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:throwing_axe_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:halberd_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:pike_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:lance_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:throwing_knife_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:javelin_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:boomerang_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:battleaxe_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:mace_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:glaive_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
+<spartanweaponry:staff_steel:*>.addTooltip(format.gold("+2 damage against Nether mobs and Fire elementals"));
 
 //Potion Of Curse Break
 brewing.addBrew(<minecraft:potion>.withTag({Potion: "minecraft:thick"}), <rlmixins:cleansing_talisman>, <minecraft:potion>.withTag({Potion: "rlmixins:curse_break"}));
@@ -175,7 +186,7 @@ brewing.addBrew(<minecraft:splash_potion>.withTag({Potion: "rlmixins:curse_break
 //<mujmajnkraftsbettersurvival:itemjunglechitinhammer:*>.addTooltip(format.green("Secondary Attack, Stun And Knockback"));
 //<mujmajnkraftsbettersurvival:itemdesertchitinhammer:*>.addTooltip(format.green("Secondary Attack, Stun And Knockback"));
 
-<sereneseasons:greenhouse_glass:*>.addTooltip(game.localize("tooltip.sereneseasons:greenhouse_glass", "en_us"));
+<sereneseasons:greenhouse_glass:*>.addTooltip(format.green("Allows crops up to 7 blocks directly beneath to grow in any season"));
 
 furnace.addRecipe(<defiledlands:umbrium_nugget> * 4, <spartandefiled:longbow_umbrium:*>, 99999);
 furnace.addRecipe(<defiledlands:umbrium_nugget> * 4, <spartandefiled:crossbow_umbrium:*>, 99999);
@@ -189,45 +200,6 @@ furnace.addRecipe(<contenttweaker:steel_nugget> * 4, <spartanweaponry:longbow_st
 furnace.addRecipe(<contenttweaker:steel_nugget> * 4, <spartanweaponry:crossbow_steel:*>, 99999);
 furnace.addRecipe(<variedcommodities:coin_bronze> * 4, <spartanweaponry:longbow_bronze:*>, 99999);
 furnace.addRecipe(<variedcommodities:coin_bronze> * 4, <spartanweaponry:crossbow_bronze:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 4, <spartanweaponry:longbow_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 4, <spartanweaponry:crossbow_copper:*>, 99999);
-
-
-furnace.addRecipe(<defiledlands:umbrium_ingot> * 1, <spartandefiled:scythe_umbrium:*>, 99999);
-furnace.addRecipe(<minecraft:iron_ingot> * 1, <spartanweaponry:scythe_iron:*>, 99999);
-furnace.addRecipe(<minecraft:gold_ingot> * 1, <spartanweaponry:scythe_gold:*>, 99999);
-furnace.addRecipe(<minecraft:diamond> * 1, <spartanweaponry:scythe_diamond:*>, 99999);
-furnace.addRecipe(<iceandfire:silver_ingot> * 1, <spartanweaponry:scythe_silver:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:scythe_copper:*>, 99999);
-furnace.addRecipe(<variedcommodities:ingot_steel> * 1, <spartanweaponry:scythe_steel:*>, 99999);
-furnace.addRecipe(<variedcommodities:ingot_bronze> * 1, <spartanweaponry:scythe_bronze:*>, 99999);
-
-furnace.addRecipe(<iceandfire:copper_ingot> * 2, <mujmajnkraftsbettersurvival:itemcopperhammer:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 2, <mujmajnkraftsbettersurvival:itemcopperbattleaxe:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 1, <mujmajnkraftsbettersurvival:itemcopperdagger:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 4, <mujmajnkraftsbettersurvival:itemcoppernunchaku:*>, 99999);
-
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:longsword_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 4, <spartanweaponry:katana_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:saber_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:rapier_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 2, <spartanweaponry:greatsword_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 2, <spartanweaponry:hammer_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:warhammer_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:halberd_copper:*>, 99999);
-//furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:throwing_axe_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 2, <spartanweaponry:battleaxe_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:mace_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanweaponry:glaive_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 4, <spartanweaponry:staff_copper:*>, 99999);
-
-furnace.addRecipe(<iceandfire:copper_nugget> * 1, <spartanweaponry:dagger_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 1, <spartanweaponry:spear_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 1, <spartanweaponry:pike_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_nugget> * 1, <spartanweaponry:lance_copper:*>, 99999);
-
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanshields:shield_basic_copper:*>, 99999);
-furnace.addRecipe(<iceandfire:copper_ingot> * 1, <spartanshields:shield_tower_copper:*>, 99999);
 
 recipes.remove(<inspirations:materials:2>);
 recipes.remove(<inspirations:materials:3>);
@@ -676,6 +648,83 @@ recipes.addShaped("lolarecipeHORSEDIAMOND",<minecraft:diamond_horse_armor>,
  [[null,null,<minecraft:diamond_helmet>],
   [<minecraft:diamond>,<minecraft:wool:*>,<minecraft:diamond>],
   [<minecraft:diamond_leggings>,null,<minecraft:diamond_leggings>]]);
+  
+// VItems
+recipes.addShaped("vitemsweapons1",<vitemsmod:hyperion_sword>,[
+[null,<srparasites:weapon_sword_sentient>,null],
+[null,<forgottenitems:ender_talisman>,null],
+[null,<contenttweaker:sentient_core>,null]
+]);
+recipes.addShaped("vitemsweapons2",<vitemsmod:valkyrie_sword>,[
+[null,<srparasites:weapon_sword_sentient>,null],
+[null,<xat:dragons_eye>,null],
+[null,<contenttweaker:sentient_core>,null]
+]);
+recipes.addShaped("vitemsweapons3",<vitemsmod:scylla_sword>,[
+[null,<srparasites:weapon_sword_sentient>,null],
+[null,<srparasites:vile_shell>,null],
+[null,<contenttweaker:sentient_core>,null]
+]);
+recipes.addShaped("vitemsweapons4",<vitemsmod:astraea_sword>,[
+[null,<srparasites:weapon_sword_sentient>,null],
+[null,<minecraft:golden_apple>*64,null],
+[null,<contenttweaker:sentient_core>,null]
+]);
+recipes.addShaped("vitemsweapons5",<vitemsmod:terminator_bow>,[
+[<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>],
+[<forgottenitems:ender_talisman>,<srparasites:weapon_bow_sentient>,<minecraft:string>*64],
+[<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>]
+]);
+recipes.addShaped("vitemsweapons6",<vitemsmod:juju_shortbow>,[
+[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16],
+[<forgottenitems:ender_talisman>,<minecraft:bow>,<minecraft:string>*64],
+[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16]
+]);
+recipes.addShaped("vitemsweapons7",<vitemsmod:inferther_sword>,[
+[null,<srparasites:weapon_cleaver_sentient>,null],
+[<iceandfire:witherbone>*32,<xat:dragons_eye>,<iceandfire:witherbone>*32],
+[null,<srparasites:hardened_bone_handle>,null]
+]);
+recipes.addShaped("vitemsweapons8",<vitemsmod:aspect_of_the_end>,[
+[<minecraft:ender_pearl>*16,<minecraft:diamond>*10,<minecraft:ender_pearl>*16],
+[<minecraft:ender_pearl>*16,<minecraft:diamond>*10,<minecraft:ender_pearl>*16],
+[<minecraft:ender_pearl>*16,<minecraft:stick>,<minecraft:ender_pearl>*16]
+]);
+recipes.addShaped("vitemsweapons9",<vitemsmod:warped_aspect_of_the_end>,[
+[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16],
+[<minecraft:ender_pearl>*16,<vitemsmod:aspect_of_the_end>,<minecraft:ender_pearl>*16],
+[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16]
+]);
+recipes.addShaped("vitemsweapons10",<vitemsmod:aspect_of_the_void>,[
+[null,<forgottenitems:ender_talisman>,null],
+[null,<vitemsmod:warped_aspect_of_the_end>,null],
+[null,null,null]
+]);
+recipes.addShaped("vitemsweapons11",<vitemsmod:warped_aspect_of_the_void>,[
+[null,<forgottenitems:ender_talisman>,null],
+[null,<vitemsmod:aspect_of_the_void>,null],
+[null,<forgottenitems:ender_talisman>,null]
+]);
+recipes.addShaped("vitemsitems1",<vitemsmod:end_rune>,[
+[<minecraft:ender_pearl>*16,null,null],
+[<minecraft:cobblestone>*64,null,null],
+[<minecraft:ender_pearl>*16,null,null]
+]);
+recipes.addShaped("vitemsitems2",<vitemsmod:heart_rune>,[
+[<minecraft:golden_apple>*1,null,null],
+[<minecraft:cobblestone>*64,null,null],
+[<minecraft:golden_apple>*1,null,null]
+]);
+recipes.addShaped("vitemsitems3",<vitemsmod:music_rune>,[
+[<minecraft:noteblock>*15,null,null],
+[<minecraft:cobblestone>*64,null,null],
+[<minecraft:noteblock>*15,null,null]
+]);
+recipes.addShaped("vitemsitems4",<vitemsmod:lava_rune>,[
+[<minecraft:lava_bucket>,null,null],
+[<minecraft:cobblestone>*64,null,null],
+[<minecraft:lava_bucket>,null,null]
+]);
 
 //=====================
 //NEW LE ARMORS
@@ -778,84 +827,11 @@ recipes.addShapeless("lolsrsarmor2",<srparasites:armor_chest_sentient>,[<srparas
 recipes.addShapeless("lolsrsarmor3",<srparasites:armor_pants_sentient>,[<srparasites:armor_pants>,<contenttweaker:sentient_core>]);
 recipes.addShapeless("lolsrsarmor4",<srparasites:armor_boots_sentient>,[<srparasites:armor_boots>,<contenttweaker:sentient_core>]);
 
-// VItems
-recipes.addShaped("vitemsweapons1",<vitemsmod:hyperion_sword>,[
-[null,<srparasites:weapon_sword_sentient>,null],
-[null,<forgottenitems:ender_talisman>,null],
-[null,<contenttweaker:sentient_core>,null]
-]);
-recipes.addShaped("vitemsweapons2",<vitemsmod:valkyrie_sword>,[
-[null,<srparasites:weapon_sword_sentient>,null],
-[null,<xat:dragons_eye>,null],
-[null,<contenttweaker:sentient_core>,null]
-]);
-recipes.addShaped("vitemsweapons3",<vitemsmod:scylla_sword>,[
-[null,<srparasites:weapon_sword_sentient>,null],
-[null,<srparasites:vile_shell>,null],
-[null,<contenttweaker:sentient_core>,null]
-]);
-recipes.addShaped("vitemsweapons4",<vitemsmod:astraea_sword>,[
-[null,<srparasites:weapon_sword_sentient>,null],
-[null,<minecraft:golden_apple>*64,null],
-[null,<contenttweaker:sentient_core>,null]
-]);
-recipes.addShaped("vitemsweapons5",<vitemsmod:terminator_bow>,[
-[<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>],
-[<forgottenitems:ender_talisman>,<srparasites:weapon_bow_sentient>,<minecraft:string>*64],
-[<minecraft:ender_pearl>*16,<contenttweaker:blood_tear>,<srparasites:vile_shell>]
-]);
-recipes.addShaped("vitemsweapons6",<vitemsmod:inferther_sword>,[
-[null,<srparasites:weapon_cleaver_sentient>,null],
-[<iceandfire:witherbone>*32,<xat:dragons_eye>,<iceandfire:witherbone>*32],
-[null,<srparasites:hardened_bone_handle>,null]
-]);
-recipes.addShaped("vitemsweapons7",<vitemsmod:aspect_of_the_end>,[
-[<minecraft:ender_pearl>*16,<minecraft:diamond>*10,<minecraft:ender_pearl>*16],
-[<minecraft:ender_pearl>*16,<minecraft:diamond>*10,<minecraft:ender_pearl>*16],
-[<minecraft:ender_pearl>*16,<minecraft:stick>,<minecraft:ender_pearl>*16]
-]);
-recipes.addShaped("vitemsweapons8",<vitemsmod:warped_aspect_of_the_end>,[
-[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16],
-[<minecraft:ender_pearl>*16,<vitemsmod:aspect_of_the_end>,<minecraft:ender_pearl>*16],
-[<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16,<minecraft:ender_pearl>*16]
-]);
-recipes.addShaped("vitemsweapons9",<vitemsmod:aspect_of_the_void>,[
-[null,<forgottenitems:ender_talisman>,null],
-[null,<vitemsmod:warped_aspect_of_the_end>,null],
-[null,null,null]
-]);
-recipes.addShaped("vitemsweapons10",<vitemsmod:warped_aspect_of_the_void>,[
-[null,<forgottenitems:ender_talisman>,null],
-[null,<vitemsmod:aspect_of_the_void>,null],
-[null,<forgottenitems:ender_talisman>,null]
-]);
-recipes.addShaped("vitemsitems1",<vitemsmod:end_rune>,[
-[<minecraft:ender_pearl>*16,null,null],
-[<minecraft:cobblestone>*64,null,null],
-[<minecraft:ender_pearl>*16,null,null]
-]);
-recipes.addShaped("vitemsitems2",<vitemsmod:heart_rune>,[
-[<minecraft:golden_apple>*1,null,null],
-[<minecraft:cobblestone>*64,null,null],
-[<minecraft:golden_apple>*1,null,null]
-]);
-recipes.addShaped("vitemsitems3",<vitemsmod:music_rune>,[
-[<minecraft:noteblock>*15,null,null],
-[<minecraft:cobblestone>*64,null,null],
-[<minecraft:noteblock>*15,null,null]
-]);
-recipes.addShaped("vitemsitems4",<vitemsmod:lava_rune>,[
-[<minecraft:lava_bucket>,null,null],
-[<minecraft:cobblestone>*64,null,null],
-[<minecraft:lava_bucket>,null,null]
-]);
-
-
-//recipes.addShapeless("lolsrsweapon1",<srparasites:weapon_scythe_sentient>,[<srparasites:weapon_scythe>,<contenttweaker:sentient_core>]);
-//recipes.addShapeless("lolsrsweapon2",<srparasites:weapon_axe_sentient>,[<srparasites:weapon_axe>,<contenttweaker:sentient_core>]);
-//recipes.addShapeless("lolsrsweapon3",<srparasites:weapon_sword_sentient>,[<srparasites:weapon_sword>,<contenttweaker:sentient_core>]);
-//recipes.addShapeless("lolsrsweapon4",<srparasites:weapon_cleaver_sentient>,[<srparasites:weapon_cleaver>,<contenttweaker:sentient_core>]);
-//recipes.addShapeless("lolsrsweapon5",<srparasites:weapon_bow_sentient>,[<srparasites:weapon_bow>,<contenttweaker:sentient_core>]);
+recipes.addShapeless("lolsrsweapon1",<srparasites:weapon_scythe_sentient>,[<srparasites:weapon_scythe>,<contenttweaker:sentient_core>]);
+recipes.addShapeless("lolsrsweapon2",<srparasites:weapon_axe_sentient>,[<srparasites:weapon_axe>,<contenttweaker:sentient_core>]);
+recipes.addShapeless("lolsrsweapon3",<srparasites:weapon_sword_sentient>,[<srparasites:weapon_sword>,<contenttweaker:sentient_core>]);
+recipes.addShapeless("lolsrsweapon4",<srparasites:weapon_cleaver_sentient>,[<srparasites:weapon_cleaver>,<contenttweaker:sentient_core>]);
+recipes.addShapeless("lolsrsweapon5",<srparasites:weapon_bow_sentient>,[<srparasites:weapon_bow>,<contenttweaker:sentient_core>]);
 
 recipes.addShaped("lolsrsentientcore",<contenttweaker:sentient_core>,
  [[<contenttweaker:blood_tear>,<contenttweaker:blood_tear>,<contenttweaker:blood_tear>],
@@ -934,15 +910,5 @@ mods.inspirations.Cauldron.addFluidRecipe(<foodexpansion:itemcarrotseedsoup>, <m
 
 //Milk Kek
 //mods.inspirations.Cauldron.addBrewingRecipe("mujmajnkraftsbettersurvival:milk", "minecraft:thick", <minecraft:milk_bucket>);
-
-recipes.addShaped("lolarecipe60",<xat:damage_shield>,
- [[<xat:glowing_gem>,<quark:biotite>,<xat:glowing_gem>],
-  [<quark:biotite>,<minecraft:dragon_egg>|<iceandfire:dragonegg_red>|<iceandfire:dragonegg_green>|<iceandfire:dragonegg_bronze>|<iceandfire:dragonegg_gray>|<iceandfire:dragonegg_blue>|<iceandfire:dragonegg_white>|<iceandfire:dragonegg_sapphire>|<iceandfire:dragonegg_silver>|<iceandfire:dragonegg_amethyst>|<iceandfire:dragonegg_electric>|<iceandfire:dragonegg_black>|<iceandfire:dragonegg_copper>,<quark:biotite>],
-  [<xat:glowing_gem>,<quark:biotite>,<xat:glowing_gem>]]);
-
-recipes.addShaped("lolarecipe76",<simpledifficulty:dragon_canteen>,
- [[<iceandfire:dragon_skull:0>|<iceandfire:dragon_skull:1>|<iceandfire:dragon_skull:2>],
-  [<simpledifficulty:iron_canteen:*>],
-  [<iceandfire:fire_dragon_heart>|<iceandfire:ice_dragon_heart>|<iceandfire:lightning_dragon_heart>]]);
 
 print("Script ending!");
