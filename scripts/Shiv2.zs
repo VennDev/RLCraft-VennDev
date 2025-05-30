@@ -743,7 +743,7 @@ recipes.addShaped("vitems_superior_dragon_leggings",<vitemsmod:superior_dragon_l
 [<iceandfire:dragonscales_red>*64,null,<iceandfire:dragonscales_red>*64]
 ]);
 recipes.addShaped("vitems_superior_dragon_boots",<vitemsmod:superior_dragon_boots>,[
-[<iceandfire:dragonscales_red>*64,null,<iceandfire:dragonscales_red>*64],
+[<iceandfire:dragonscales_red>*64,<minecraft:diamond>,<iceandfire:dragonscales_red>*64],
 [<iceandfire:dragonscales_red>*64,null,<iceandfire:dragonscales_red>*64],
 [null,null,null]
 ]);
@@ -765,7 +765,7 @@ recipes.addShaped("vitems_young_dragon_leggings",<vitemsmod:young_dragon_legging
 [<iceandfire:dragonscales_blue>*10,null,<iceandfire:dragonscales_blue>*10]
 ]);
 recipes.addShaped("vitems_young_dragon_boots",<vitemsmod:young_dragon_boots>,[
-[<iceandfire:dragonscales_blue>*10,null,<iceandfire:dragonscales_blue>*10],
+[<iceandfire:dragonscales_blue>*10,<minecraft:diamond>,<iceandfire:dragonscales_blue>*10],
 [<iceandfire:dragonscales_blue>*10,null,<iceandfire:dragonscales_blue>*10],
 [null,null,null]
 ]);
